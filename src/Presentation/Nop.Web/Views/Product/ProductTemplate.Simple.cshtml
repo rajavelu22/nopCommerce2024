@@ -64,10 +64,6 @@
     <div class="page-body">
         @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsTop, additionalData = Model })
         <form asp-route="Product" asp-route-sename="@Model.SeName" method="post" id="product-details-form">
-            @* @if (seoSettings.MicrodataEnabled)
-            {
-                @Html.Raw(Model.JsonLd)
-            } *@
             <div data-productid="@Model.Id">
                 <div class="product-essential">
                     @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductDetailsEssentialTop, additionalData = Model })
