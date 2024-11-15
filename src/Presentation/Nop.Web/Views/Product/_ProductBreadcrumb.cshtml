@@ -9,6 +9,10 @@
 
 @{
     var breadcrumbDelimiter = commonSettings.BreadcrumbDelimiter;
+    @if (seoSettings.MicrodataEnabled)
+    {
+        NopHtml.AddHeadCustomParts("<script type=\"application/ld+json\">" + Html.Raw(Model.JsonLd) + "</script>");
+    }
 }
 @if (Model.Enabled)
 {
@@ -38,11 +42,5 @@
                 @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ProductBreadcrumbAfter, additionalData = Model })
             </li>
         </ul>
-        @if (seoSettings.MicrodataEnabled)
-        {
-            <script type="application/ld+json">
-                @Html.Raw(Model.JsonLd)
-            </script>
-        }
     </div>
 }
